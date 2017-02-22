@@ -13,7 +13,7 @@ public class ChemicalCompoundGroupTest {
         ChemicalCompound chemicalCompound2 = new ChemicalCompoundBasic(new ChemicalElement("Hélium", "He", 2, 0.5D));
         ChemicalCompound chemicalCompound3 = new ChemicalCompoundBasic(new ChemicalElement("Lithium", "Li", 3, 2.0D));
 
-        ChemicalCompoundGroup chemicalCompound = new ChemicalCompoundGroup(chemicalCompound1, chemicalCompound2, chemicalCompound3);
+        ChemicalCompoundGroup chemicalCompound = new ChemicalCompoundGroup(new ChemicalCompound[]{chemicalCompound1, chemicalCompound2, chemicalCompound3});
 
         assertEquals(4.0D, chemicalCompound.getWeight(), 0.0D);
     }

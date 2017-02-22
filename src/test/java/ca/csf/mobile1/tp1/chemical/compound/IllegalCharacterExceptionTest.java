@@ -10,7 +10,7 @@ public class IllegalCharacterExceptionTest {
     public void canGetCharacter() {
         IllegalCharacterException exception = new IllegalCharacterException('$');
 
-        assertEquals('$', exception.getCharacter());
+        assertEquals(Character.valueOf('$'), exception.getCharacter());
     }
 
     @Test

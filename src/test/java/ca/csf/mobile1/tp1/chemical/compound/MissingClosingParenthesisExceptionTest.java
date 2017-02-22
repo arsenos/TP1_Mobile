@@ -10,7 +10,7 @@ public class MissingClosingParenthesisExceptionTest {
     public void canGetMessageFromException() {
         MissingClosingParenthesisException exception = new MissingClosingParenthesisException();
 
-        assertEquals("Chemical compound contains is missing a closing parenthesis.", exception.getMessage());
+        assertEquals("Chemical compound is missing a closing parenthesis.", exception.getMessage());
     }
 
 }
