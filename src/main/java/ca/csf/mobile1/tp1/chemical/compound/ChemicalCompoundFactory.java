@@ -1,5 +1,6 @@
 package ca.csf.mobile1.tp1.chemical.compound;
 
+import ca.csf.mobile1.tp1.chemical.element.ChemicalElement;
 import ca.csf.mobile1.tp1.chemical.element.ChemicalElementRepository;
 
 import java.util.regex.Matcher;
@@ -133,8 +134,8 @@ public class ChemicalCompoundFactory{
 
             //Création des éléments
 
-            String openBracketindexes = "";
-            int openBracketCount = 0;
+            /*String openBracketindexes = "";
+            int sdopenBracketCount = 0;
             String closedBracketindexes = "";
             ChemicalCompound[] compounds = new ChemicalCompound[10];
             for (int i = 0; i < string.length(); i++) {
@@ -156,7 +157,7 @@ public class ChemicalCompoundFactory{
 
                     }
                 }
-            }
+            }*/
 
 
 
@@ -165,6 +166,68 @@ public class ChemicalCompoundFactory{
         {
             throw new EmptyFormulaException();
         }
+
+
+        return null;
+    }
+
+    private ChemicalCompound computeFromString(String string, int index)
+    {
+        int compoundInsideCount = 0; //Le nombre de compounds à mettre dans le groupe
+        int exponent = 0;
+
+        //Calcule du nombre de compound à mettre dans le groupe.
+        int unclosedBracketCount = 0;
+        for (int i = 0; i < string.length(); i++) {
+            char c = string.charAt(i);
+            int intValue = Integer.valueOf(c);
+            if (intValue == 40) //(
+            {
+                if (unclosedBracketCount == 0) {
+                    compoundInsideCount++;
+                }
+                unclosedBracketCount++;
+            } else if (intValue == 41) // )
+            {
+                unclosedBracketCount--;
+                if (unclosedBracketCount == -1) //On a atteint la fin de la parenthèse à calculer.
+                {
+                    //On vérifie si il y a un exposant après la parenthèse.
+                    if (i + 1 < string.length())
+                    {
+                        char c1 = string.charAt(i+1);
+                        int intValue1 = Integer.valueOf(c1);
+                        if (intValue1 >= 48 && intValue1 <= 57) //0-9
+                        {
+                            exponent = Integer.parseInt(String.valueOf(c1));
+                        }
+                    }
+                    break;
+                }
+            } else if (intValue >= 65 && intValue <= 90) //A-Z MAJUSCULE
+            {
+                if (unclosedBracketCount == 0) {
+                    compoundInsideCount++;
+                }
+            }
+        }
+
+        if (compoundInsideCount > 1) //Si c'est un groupe
+        {
+            //Création du tableau de compounds à envoyer au ChemicalCompoundGroup en cours de création.
+            ChemicalCompound[] compounds = new ChemicalCompound[compoundInsideCount];
+        }
+        else //Si c'est un élément seul
+        {
+            if (exponent == 0) //On crée un ChemicalCompoundBasic
+            {
+                String symbol = "";
+                //***On compute le symbole
+                return new ChemicalCompoundBasic(elements.get(symbol));
+            }
+        }
+
+
 
 
         return null;
