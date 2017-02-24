@@ -9,15 +9,43 @@ import java.util.regex.Pattern;
 /**
  * Created by Samuel A on 2017-02-22.
  */
+
+/**
+ * Classe mère de la librairie.
+ * Cette classe analyse une formule chimique pour créer et retourner un ChemicalCompound y correspondant.
+ */
 public class ChemicalCompoundFactory{
 
+    /**
+     * Le répertoire d'éléments.
+     */
     private ChemicalElementRepository elements;
 
+
+    /**
+     * Constructeur prenant en paramètre le répertoire d'éléments chimiques.
+     * @param elements le répertoire d'éléments chimiques.
+     */
     public ChemicalCompoundFactory(ChemicalElementRepository elements)
     {
         this.elements = elements;
     }
 
+
+    /**
+     * Évalue la formule.
+     * Valide la bonne syntaxe de la formule. (Lance une exception au besoin)
+     * Analyse la formule pour créer un ChemicalCompound qui y correpsond.
+     * @param string la formule chimique à analyser.
+     * @return Retourne un ChemicalCompound qui correspond à la formule chimique.
+     * @throws EmptyFormulaException
+     * @throws EmptyParenthesisException
+     * @throws IllegalCharacterException
+     * @throws IllegalClosingParenthesisException
+     * @throws MisplacedExponentException
+     * @throws MissingClosingParenthesisException
+     * @throws UnknownChemicalElementException
+     */
     public ChemicalCompound createFromString(String string) throws EmptyFormulaException,
                                                                    EmptyParenthesisException,
                                                                    IllegalCharacterException,
@@ -228,19 +256,20 @@ public class ChemicalCompoundFactory{
                     }
                 }
             }
-
             return new ChemicalCompoundGroup(compounds);
-
         }
         else
         {
             throw new EmptyFormulaException();
         }
-
-
-        //return null;
     }
 
+    /**
+     * Analyse récursivement le contenu d'une parenthèse.
+     * @param string la formule à analyser.
+     * @param index la position dans la formule du premier caractère suivant l'ouverture de la parenthèse. *****IMPORTANT *****
+     * @return le ChemicalCompound correspondant à la parenthèse qui est à analyser.
+     */
     private ChemicalCompound computeFromString(String string, int index)
     {
         int compoundInsideCount = 0; //Le nombre de compounds à mettre dans le groupe
