@@ -29,4 +29,13 @@ public class IllegalCharacterException extends Throwable {
     {
         return this.character;
     }
+
+    /**
+     * Retourne le message de l'exception.
+     * @return le message de l'exception.
+     */
+    public String getMessage()
+    {
+        return "Illegal character \"" + character + "\"found in chemical compound formula.";
+    }
 }
