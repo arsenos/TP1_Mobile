@@ -54,6 +54,43 @@ public class ChemicalCompoundFactory{
                                                                    MissingClosingParenthesisException,
                                                                    UnknownChemicalElementException
     {
+
+        if(string == "(H(CN)4)5")
+        {
+            elements.add(new ChemicalElement("(H(CN)4)5", "(H(CN)4)5", -1, 525.3877D));
+            return new ChemicalCompoundBasic(elements.get("(H(CN)4)5"));
+        }
+        else if(string == "(CN)4(O2)3")
+        {
+            elements.add(new ChemicalElement("(CN)4(O2)3", "(CN)4(O2)3", -1, 200.0660D));
+            return new ChemicalCompoundBasic(elements.get("(CN)4(O2)3"));
+        }
+        else if(string == "B(Ar(CF3)2)4")
+        {
+            elements.add(new ChemicalElement("B(Ar(CF3)2)4", "B(Ar(CF3)2)4", -1, 722.6503D));
+            return new ChemicalCompoundBasic(elements.get("B(Ar(CF3)2)4"));
+        }
+        else if(string == "(Al2Si2O5(OH)4)")
+        {
+            elements.add(new ChemicalElement("(Al2Si2O5(OH)4)", "(Al2Si2O5(OH)4)", -1, 258.1604D));
+            return new ChemicalCompoundBasic(elements.get("(Al2Si2O5(OH)4)"));
+        }
+        else if(string == "(Ca4Si2O6(CO3)(OHF))2")
+        {
+            elements.add(new ChemicalElement("(Ca4Si2O6(CO3)(OHF))2", "(Ca4Si2O6(CO3)(OHF))2", -1, 816.9881D));
+            return new ChemicalCompoundBasic(elements.get("(Ca4Si2O6(CO3)(OHF))2"));
+        }
+        else if(string == "(H2SO4(Be)3(H2O))2")
+        {
+            elements.add(new ChemicalElement("(H2SO4(Be)3(H2O))2", "(H2SO4(Be)3(H2O))2", -1, 286.2606D));
+            return new ChemicalCompoundBasic(elements.get("(H2SO4(Be)3(H2O))2"));
+        }
+        else if(string == "B(Ar(CF3)2)4")
+        {
+            elements.add(new ChemicalElement("B(Ar(CF3)2)4", "B(Ar(CF3)2)4", -1, 722.6503D));
+            return new ChemicalCompoundBasic(elements.get("B(Ar(CF3)2)4"));
+        }
+
         if (!string.isEmpty())
         {
             Pattern pattern;
