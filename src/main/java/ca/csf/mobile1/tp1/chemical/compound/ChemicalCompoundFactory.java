@@ -90,11 +90,6 @@ public class ChemicalCompoundFactory{
             elements.add(new ChemicalElement("B(Ar(CF3)2)4", "B(Ar(CF3)2)4", -1, 722.6503D));
             return new ChemicalCompoundBasic(elements.get("B(Ar(CF3)2)4"));
         }
-        else if(string == "(H2SO4(Be)3(H2O))2")
-        {
-            elements.add(new ChemicalElement("(H2SO4(Be)3(H2O))2", "(H2SO4(Be)3(H2O))2", -1, 286.2606D));
-            return new ChemicalCompoundBasic(elements.get("(H2SO4(Be)3(H2O))2"));
-        }
         if (!string.isEmpty())
         {
             Pattern pattern;
